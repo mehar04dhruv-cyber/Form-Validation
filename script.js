@@ -1,10 +1,18 @@
 // CLOCK
-setInterval(()=>{
-    document.getElementById("clock").innerText =
-    new Date().toLocaleTimeString('en-GB');
-},1000);
+function updateClock(){
+    let now = new Date();
+    let sec = now.getSeconds();
+    let min = now.getMinutes();
+    let hr = now.getHours();
 
-// AGE FIX
+    document.querySelector(".second").style.transform = `rotate(${sec*6}deg)`;
+    document.querySelector(".minute").style.transform = `rotate(${min*6}deg)`;
+    document.querySelector(".hour").style.transform = `rotate(${(hr%12)*30 + min*0.5}deg)`;
+}
+setInterval(updateClock,1000);
+updateClock();
+
+// AGE
 document.getElementById("dob").addEventListener("change",function(){
     let dob=new Date(this.value);
     let today=new Date();
@@ -19,52 +27,33 @@ document.getElementById("dob").addEventListener("change",function(){
     document.getElementById("age").value=age;
 });
 
-// USERNAME
-document.getElementById("username").addEventListener("input",function(){
-    let msg=document.getElementById("userMsg");
-
-    if(this.value.length<5){
-        msg.textContent="Too short";
-        msg.style.color="red";
-    }else{
-        msg.textContent="Looks good";
-        msg.style.color="lightgreen";
-    }
+// PHONE
+document.getElementById("phone").addEventListener("input",function(){
+    this.value=this.value.replace(/[^0-9]/g,'').slice(0,10);
 });
 
-// PASSWORD
-document.getElementById("password").addEventListener("input",function(){
-    let val=this.value;
-    let msg=document.getElementById("strength");
-
-    if(val.length<6){
-        msg.textContent="Weak password";
-        msg.style.color="red";
-    }else if(/[A-Z]/.test(val)&&/[0-9]/.test(val)){
-        msg.textContent="Strong password";
-        msg.style.color="lightgreen";
-    }else{
-        msg.textContent="Medium password";
-        msg.style.color="orange";
-    }
-});
-
-// ANALOG CLOCK
-function updateAnalogClock(){
-    let now = new Date();
-
-    let sec = now.getSeconds();
-    let min = now.getMinutes();
-    let hr = now.getHours();
-
-    let secDeg = sec * 6;
-    let minDeg = min * 6;
-    let hrDeg = (hr % 12) * 30 + min * 0.5;
-
-    document.querySelector(".second").style.transform = `rotate(${secDeg}deg)`;
-    document.querySelector(".minute").style.transform = `rotate(${minDeg}deg)`;
-    document.querySelector(".hour").style.transform = `rotate(${hrDeg}deg)`;
+// PASSWORD TOGGLE
+function togglePassword(){
+    let pass=document.getElementById("password");
+    pass.type=pass.type==="password"?"text":"password";
 }
 
-setInterval(updateAnalogClock, 1000);
-updateAnalogClock();
+// SUBMIT
+document.getElementById("form").addEventListener("submit",function(e){
+    e.preventDefault();
+
+    let pass=document.getElementById("password").value;
+    let confirm=document.getElementById("confirmPassword").value;
+
+    if(pass!==confirm){
+        alert("Passwords do not match");
+        return;
+    }
+
+    document.getElementById("popup").style.display="flex";
+});
+
+// CLOSE POPUP
+function closePopup(){
+    document.getElementById("popup").style.display="none";
+}

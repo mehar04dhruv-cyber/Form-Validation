@@ -9,30 +9,37 @@
 
 <div class="main">
 
-    <!-- LEFT -->
     <div class="left">
         <h1>Nexora</h1>
         <p>Internship Application</p>
     </div>
 
-    <!-- RIGHT -->
     <div class="right">
-        <form id="form">
+        <form id="form" novalidate>
 
             <h2>Apply Now</h2>
 
             <div class="group">
-                <input type="text" required>
+                <select id="prefix" required>
+                    <option value=""></option>
+                    <option>Mr</option>
+                    <option>Mrs</option>
+                </select>
+                <label class="active">Prefix</label>
+            </div>
+
+            <div class="group">
+                <input type="text" id="fname" required>
                 <label>First Name</label>
             </div>
 
             <div class="group">
-                <input type="text" required>
+                <input type="text" id="lname" required>
                 <label>Last Name</label>
             </div>
 
             <div class="group">
-                <input type="email" required>
+                <input type="email" id="email" required>
                 <label>Email</label>
             </div>
 
@@ -55,9 +62,21 @@
             </div>
 
             <div class="group">
+                <input type="tel" id="phone" maxlength="10" required>
+                <label>Phone (10 digits)</label>
+            </div>
+
+            <div class="group">
                 <input type="password" id="password" required>
                 <label>Password</label>
-                <small id="strength"></small>
+                <span class="eye" onclick="togglePassword()">👁</span>
+
+                <ul class="rules">
+                    <li>Min 8 chars</li>
+                    <li>1 Capital</li>
+                    <li>1 Number</li>
+                    <li>1 Special</li>
+                </ul>
             </div>
 
             <div class="group">
@@ -66,13 +85,8 @@
             </div>
 
             <div class="group">
-                <input type="tel" id="phone" required>
-                <label>Phone</label>
-            </div>
-
-            <div class="group">
-                <select required>
-                    <option></option>
+                <select id="domain" required>
+                    <option value=""></option>
                     <option>AI/ML</option>
                     <option>Web Dev</option>
                     <option>Data Science</option>
@@ -86,6 +100,8 @@
     </div>
 
 </div>
+
+<!-- ANALOG CLOCK -->
 <div class="analog-clock">
     <div class="hand hour"></div>
     <div class="hand minute"></div>
@@ -93,7 +109,14 @@
     <div class="center-dot"></div>
 </div>
 
-<!-- FOOTER -->
+<!-- POPUP -->
+<div class="popup" id="popup">
+    <div class="popup-box">
+        <h3>Submitted Successfully ✅</h3>
+        <button onclick="closePopup()">OK</button>
+    </div>
+</div>
+
 <footer>
     Need help? <span>support@nexora.com</span>
 </footer>
