@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Nexora Internship</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="main">
+
+    <!-- LEFT -->
+    <div class="left">
+        <h1>Nexora</h1>
+        <p>Internship Application</p>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right">
+        <form id="form">
+
+            <h2>Apply Now</h2>
+
+            <div class="group">
+                <input type="text" required>
+                <label>First Name</label>
+            </div>
+
+            <div class="group">
+                <input type="text" required>
+                <label>Last Name</label>
+            </div>
+
+            <div class="group">
+                <input type="email" required>
+                <label>Email</label>
+            </div>
+
+            <div class="group">
+                <input type="text" id="username" required>
+                <label>Username</label>
+                <small id="userMsg"></small>
+            </div>
+
+            <div class="row">
+                <div class="group">
+                    <input type="date" id="dob" required>
+                    <label class="active">DOB</label>
+                </div>
+
+                <div class="group">
+                    <input type="number" id="age" readonly>
+                    <label class="active">Age</label>
+                </div>
+            </div>
+
+            <div class="group">
+                <input type="password" id="password" required>
+                <label>Password</label>
+                <small id="strength"></small>
+            </div>
+
+            <div class="group">
+                <input type="password" id="confirmPassword" required>
+                <label>Confirm Password</label>
+            </div>
+
+            <div class="group">
+                <input type="tel" id="phone" required>
+                <label>Phone</label>
+            </div>
+
+            <div class="group">
+                <select required>
+                    <option></option>
+                    <option>AI/ML</option>
+                    <option>Web Dev</option>
+                    <option>Data Science</option>
+                </select>
+                <label class="active">Domain</label>
+            </div>
+
+            <button type="submit">Submit</button>
+
+        </form>
+    </div>
+
+</div>
+<div class="analog-clock">
+    <div class="hand hour"></div>
+    <div class="hand minute"></div>
+    <div class="hand second"></div>
+    <div class="center-dot"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    Need help? <span>support@nexora.com</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
