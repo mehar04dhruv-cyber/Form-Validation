@@ -1,31 +1,53 @@
-*{margin:0;padding:0;box-sizing:border-box;}
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
+/* BODY */
 body{
-    font-family:'Segoe UI';
+    font-family:'Segoe UI',sans-serif;
     height:100vh;
     overflow:hidden;
+
     background: linear-gradient(-45deg,#0f172a,#1e293b,#020617,#1e3a8a);
     background-size:400% 400%;
     animation: gradient 10s ease infinite;
 }
 
+/* BACKGROUND ANIMATION */
 @keyframes gradient{
     0%{background-position:0% 50%;}
     50%{background-position:100% 50%;}
     100%{background-position:0% 50%;}
 }
 
-.main{display:flex;height:100vh;}
+/* LAYOUT */
+.main{
+    display:flex;
+    height:100vh;
+}
 
+/* LEFT PANEL */
 .left{
     width:40%;
     display:flex;
+    flex-direction:column;
     justify-content:center;
     align-items:center;
-    flex-direction:column;
     color:white;
 }
 
+.left h1{
+    font-size:42px;
+}
+
+.left p{
+    opacity:0.7;
+}
+
+/* RIGHT PANEL */
 .right{
     width:60%;
     display:flex;
@@ -33,29 +55,40 @@ body{
     align-items:center;
 }
 
-form{width:340px;}
+/* FORM */
+form{
+    width:340px;
+}
 
-.group{position:relative;margin-bottom:14px;}
+/* INPUT GROUP */
+.group{
+    position:relative;
+    margin-bottom:15px;
+}
 
-/* INPUT + SELECT SAME STYLE */
+/* INPUT + SELECT */
 .group input,
 .group select{
     width:100%;
     padding:12px;
+
     border-radius:8px;
     border:1px solid rgba(255,255,255,0.2);
+
     background: rgba(255,255,255,0.08);
     color:white;
+
     backdrop-filter:blur(10px);
+    transition:0.3s;
 }
 
-/* CUSTOM DROPDOWN */
+/* DROPDOWN FIX */
 .group select{
     appearance:none;
     cursor:pointer;
 }
 
-/* ARROW */
+/* DROPDOWN ARROW */
 .group::after{
     content:"⌄";
     position:absolute;
@@ -63,6 +96,20 @@ form{width:340px;}
     top:12px;
     color:#38bdf8;
     pointer-events:none;
+}
+
+/* HOVER EFFECT */
+.group input:hover,
+.group select:hover{
+    transform:translateY(-2px);
+    border-color:#38bdf8;
+}
+
+/* FOCUS */
+.group input:focus,
+.group select:focus{
+    outline:none;
+    box-shadow:0 0 10px #38bdf8;
 }
 
 /* LABEL */
@@ -82,17 +129,33 @@ form{width:340px;}
 }
 
 /* ROW */
-.row{display:flex;gap:10px;}
+.row{
+    display:flex;
+    gap:10px;
+}
 
+/* BUTTON */
 button{
     width:100%;
     padding:12px;
+
     border:none;
     border-radius:8px;
+
     background:#38bdf8;
+    color:black;
+    font-weight:bold;
+
     cursor:pointer;
+    transition:0.3s;
 }
 
+button:hover{
+    transform:translateY(-2px);
+    background:#0ea5e9;
+}
+
+/* PASSWORD EYE */
 .eye{
     position:absolute;
     right:10px;
@@ -100,23 +163,49 @@ button{
     cursor:pointer;
 }
 
+/* RULES */
 .rules{
     font-size:12px;
     margin-top:5px;
     color:#94a3b8;
 }
 
-/* CLOCK */
+.rules li.valid{
+    color:#22c55e;
+}
+
+.rules li.invalid{
+    color:red;
+}
+
+/* ERROR STATE */
+.error{
+    border:2px solid red !important;
+}
+
+/* SUCCESS STATE */
+.success{
+    border:2px solid #38bdf8 !important;
+}
+
+/* ANALOG CLOCK */
 .analog-clock{
     position:fixed;
     bottom:20px;
     left:20px;
+
     width:80px;
     height:80px;
+
     border-radius:50%;
+
     background: rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+
+    box-shadow:0 5px 20px rgba(0,0,0,0.3);
 }
 
+/* CLOCK HANDS */
 .hand{
     position:absolute;
     bottom:50%;
@@ -124,38 +213,108 @@ button{
     transform-origin:bottom;
 }
 
-.hour{height:18px;width:3px;background:white;}
-.minute{height:24px;width:2px;background:#38bdf8;}
-.second{height:28px;width:1px;background:red;}
+.hour{
+    height:18px;
+    width:3px;
+    background:white;
+}
 
+.minute{
+    height:24px;
+    width:2px;
+    background:#38bdf8;
+}
+
+.second{
+    height:28px;
+    width:1px;
+    background:red;
+}
+
+/* CENTER DOT */
 .center-dot{
-    width:6px;height:6px;background:#38bdf8;
-    position:absolute;top:50%;left:50%;
+    width:6px;
+    height:6px;
+    background:#38bdf8;
+
+    border-radius:50%;
+
+    position:absolute;
+    top:50%;
+    left:50%;
+
     transform:translate(-50%,-50%);
 }
 
 /* POPUP */
 .popup{
     display:none;
+
     position:fixed;
-    top:0;left:0;
-    width:100%;height:100%;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
     background:rgba(0,0,0,0.6);
+
     justify-content:center;
     align-items:center;
 }
 
+/* POPUP BOX */
 .popup-box{
     background:white;
-    padding:20px;
-    border-radius:10px;
+    color:black;
+
+    padding:25px;
+    border-radius:12px;
+
     text-align:center;
+
+    animation: pop 0.3s ease;
 }
 
+.popup-box h2{
+    color:#22c55e;
+    margin-bottom:10px;
+}
+
+.popup-box button{
+    margin-top:15px;
+    padding:8px 15px;
+
+    border:none;
+    border-radius:6px;
+
+    background:#38bdf8;
+    cursor:pointer;
+}
+
+/* POPUP ANIMATION */
+@keyframes pop{
+    from{
+        transform:scale(0.8);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+/* FOOTER */
 footer{
     position:absolute;
     bottom:10px;
     width:100%;
     text-align:center;
+
     color:#94a3b8;
+    font-size:12px;
+}
+
+footer span{
+    color:#38bdf8;
 }

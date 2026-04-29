@@ -46,7 +46,6 @@
             <div class="group">
                 <input type="text" id="username" required>
                 <label>Username</label>
-                <small id="userMsg"></small>
             </div>
 
             <div class="row">
@@ -63,7 +62,7 @@
 
             <div class="group">
                 <input type="tel" id="phone" maxlength="10" required>
-                <label>Phone (10 digits)</label>
+                <label>Phone</label>
             </div>
 
             <div class="group">
@@ -72,10 +71,11 @@
                 <span class="eye" onclick="togglePassword()">👁</span>
 
                 <ul class="rules">
-                    <li>Min 8 chars</li>
-                    <li>1 Capital</li>
-                    <li>1 Number</li>
-                    <li>1 Special</li>
+                    <li id="r-len">Min 8 chars</li>
+                    <li id="r-upper">1 Uppercase</li>
+                    <li id="r-lower">1 Lowercase</li>
+                    <li id="r-num">1 Number</li>
+                    <li id="r-sp">1 Special</li>
                 </ul>
             </div>
 
@@ -101,25 +101,13 @@
 
 </div>
 
-<!-- ANALOG CLOCK -->
-<div class="analog-clock">
-    <div class="hand hour"></div>
-    <div class="hand minute"></div>
-    <div class="hand second"></div>
-    <div class="center-dot"></div>
-</div>
-
 <!-- POPUP -->
 <div class="popup" id="popup">
     <div class="popup-box">
-        <h3>Submitted Successfully ✅</h3>
+        <h2>✅ Submitted Successfully</h2>
         <button onclick="closePopup()">OK</button>
     </div>
 </div>
-
-<footer>
-    Need help? <span>support@nexora.com</span>
-</footer>
 
 <script src="script.js"></script>
 </body>
